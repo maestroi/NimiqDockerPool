@@ -1,0 +1,92 @@
+version: '2'
+services:
+  mysql:
+    build: ./mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: jQ$eLXFAL*VzSL8RjXR-
+      POOL_SERVICE_PASS: thisistheservicepassword
+      POOL_SERVER_PASS: thisistheserverpassword
+      POOL_PAYOUT_PASS: thisispoolpayoutpassword
+      POOL_INFO_PASS: thisispoolinfopassword
+    expose:
+      - 3306
+    networks:
+      - core
+    volumes:
+      - db_data:/var/lib/mysql
+
+  master:
+    build: ./master
+    links:
+     - mysql
+    environment:
+      POOL_NAME: thisisthepoolname
+      WALLET_ADDRESS: "thisisthewalletaddress"
+      POOL_MYSQL_SERVER: mysql
+      POOL_SERVICE_USER: pool_service
+      POOL_SERVICE_PASS: thisistheservicepassword
+      POOL_DOMAIN: master.thisisthedomain
+    depends_on:
+      - mysql
+    networks:
+      - core
+    volumes:
+    - cert:/node/cert:ro
+    - main-full-consensus_master:/node/main-full-consensus:rw
+
+  node:
+    build: ./node
+    links:
+     - mysql
+    environment:
+      POOL_NAME: alphapool.pro
+      WALLET_ADDRESS: "NQ29 Q4X7 JS4A 5Y7E 6ATR B44S 5FMC UNMR 3A2H"
+      POOL_MYSQL_SERVER: mysql
+      POOL_SERVER_USER: pool_server
+      POOL_SERVER_PASS: 4wWtQ4YJ9Ab?3xg9^-H9
+      POOL_DOMAIN: node01.alphapool.pro
+    networks:
+      - core
+      - proxy
+    ports:
+    - 8444:8444
+    depends_on:
+    - mysql
+    volumes:
+    - cert:/node/cert:ro
+    - main-full-consensus_node:/node/main-full-consensus:rw
+
+  payout:
+    build: ./payout
+    links:
+    - mysql
+    environment:
+      POOL_NAME: AlphaPool
+      SLEEP_TIMER: 10800
+      WALLET_ADDRESS: "NQ29 Q4X7 JS4A 5Y7E 6ATR B44S 5FMC UNMR 3A2H"
+      WALLET_SEED: qwrtgqrnuytiqrtyqrtgqwrtgrwtgrewt
+      POOL_MYSQL_SERVER: mysql
+      POOL_PAYOUT_USER: pool_payout
+      POOL_PAYOUT_PASS: jGuQY+6dhX5r@$AA6s#E
+      POOL_DOMAIN: payout.alphapool.pro
+    depends_on:
+    - mysql
+    networks:
+    - core
+    volumes:
+    - cert:/node/cert:ro
+    - main-full-consensus_payout:/node/main-full-consensus:rw
+  
+networks:
+  proxy:
+    external: true
+  core:
+    external: false
+
+volumes:
+  cert:
+  main-full-consensus_node:
+  main-full-consensus_payout:
+  main-full-consensus_master:
+  db_data:
