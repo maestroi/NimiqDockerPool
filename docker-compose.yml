@@ -4,7 +4,7 @@ services:
     build: ./mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: jQ$eLXFAL*VzSL8RjXR-
+      MYSQL_ROOT_PASSWORD: thisismysqlrootpassword
       POOL_SERVICE_PASS: thisistheservicepassword
       POOL_SERVER_PASS: thisistheserverpassword
       POOL_PAYOUT_PASS: thisispoolpayoutpassword
@@ -27,6 +27,7 @@ services:
       POOL_SERVICE_USER: pool_service
       POOL_SERVICE_PASS: thisistheservicepassword
       POOL_DOMAIN: master.thisisthedomain
+      POOL_FULL_DOMAIN: thisisthedomain
     depends_on:
       - mysql
     networks:
@@ -40,12 +41,13 @@ services:
     links:
      - mysql
     environment:
-      POOL_NAME: alphapool.pro
-      WALLET_ADDRESS: "NQ29 Q4X7 JS4A 5Y7E 6ATR B44S 5FMC UNMR 3A2H"
+      POOL_NAME: thisisthedomain
+      WALLET_ADDRESS: "thisisthewalletaddress"
       POOL_MYSQL_SERVER: mysql
       POOL_SERVER_USER: pool_server
-      POOL_SERVER_PASS: 4wWtQ4YJ9Ab?3xg9^-H9
-      POOL_DOMAIN: node01.alphapool.pro
+      POOL_SERVER_PASS: thisistheserverpassword
+      POOL_DOMAIN: node01.thisisthedomain
+      POOL_FULL_DOMAIN: thisisthedomain
     networks:
       - core
       - proxy
@@ -62,14 +64,15 @@ services:
     links:
     - mysql
     environment:
-      POOL_NAME: AlphaPool
+      POOL_NAME: thisisthepoolname
       SLEEP_TIMER: 10800
-      WALLET_ADDRESS: "NQ29 Q4X7 JS4A 5Y7E 6ATR B44S 5FMC UNMR 3A2H"
-      WALLET_SEED: qwrtgqrnuytiqrtyqrtgqwrtgrwtgrewt
+      WALLET_ADDRESS: "thisisthewalletaddress"
+      WALLET_SEED: thisisthewalletseed
       POOL_MYSQL_SERVER: mysql
       POOL_PAYOUT_USER: pool_payout
-      POOL_PAYOUT_PASS: jGuQY+6dhX5r@$AA6s#E
-      POOL_DOMAIN: payout.alphapool.pro
+      POOL_PAYOUT_PASS: thisispoolpayoutpassword
+      POOL_DOMAIN: payout.thisisthedomain
+      POOL_FULL_DOMAIN: thisisthedomain
     depends_on:
     - mysql
     networks:
