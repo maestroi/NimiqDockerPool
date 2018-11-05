@@ -10,9 +10,9 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 ##general
-osusername="nimiq"
-ospassword="thisisasafepassword"
-thisisthepoolname="nimiq"
+username="nimiq"
+password="thisisasafepassword"
+thisisthepoolname="nimiq-ovh"
 ## needed voor lets encrypt cert.
 thisisthedomain="nimiq.ovh"
 email="email"
@@ -37,14 +37,14 @@ sleep 5
 echo '+-----------------------------------------------+'
 echo '|  Setup some needed stuff!                     |'
 echo '+-----------------------------------------------+'
-sudo add-apt-repository ppa:certbot/certbot -y && sudo apt-get update -y && sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+sudo add-apt-repository ppa:certbot/certbot -y  && sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common 
 echo '+-----------------------------------------------+'
 echo '|  Setup Docker-CE!                             |'
 echo '+-----------------------------------------------+'
 # Curl the key for docker Ubuntu :)
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # install Docker!!
-sudo apt-get update && sudo apt-get install docker-ce
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" -y && sudo apt-get update -y &&  sudo apt-get install docker-ce -y
 echo '+-----------------------------------------------+'
 echo '|  Setup Docker-Compose!                        |'
 echo '+-----------------------------------------------+'
