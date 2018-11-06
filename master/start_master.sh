@@ -7,6 +7,7 @@ sed -i "s/mySqlPsw: 'POOL_SERVICE_PASS'/mySqlPsw: '$POOL_SERVICE_PASS'/g" ./conf
 sed -i "s/mySqlHost: 'POOL_MYSQL_SERVER'/mySqlHost: '$POOL_MYSQL_SERVER'/g" ./config/service.conf # Set mysql server see docker-compose name default is mysql
 sed -i "s/address: 'WALLET_ADDRESS'/address: '$WALLET_ADDRESS'/g" ./config/service.conf # Set the wallet address where you are mining at.
 sed -i "s/host: 'POOL_DOMAIN'/host: '$POOL_DOMAIN'/g" ./config/service.conf # set domain name to be used by the node.
+sed -i "s/POOL_FULL_DOMAIN/$POOL_FULL_DOMAIN/g" ./config/service.conf
 
 # Start Master
 node index.js --config=./config/service.conf
