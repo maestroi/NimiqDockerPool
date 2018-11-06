@@ -114,6 +114,7 @@ cp -a /tmp/node/. /var/lib/docker/volumes/node_main-full-consensus_master/_data
 cp -a /tmp/node/. /var/lib/docker/volumes/node_main-full-consensus_payout/_data
 sudo rm main-full-consensus.tar.bz2
 sudo rm -r /tmp/node
+sudo rm -r /root/NimiqDockerPool
 echo '+-----------------------------------------------+'
 echo '|  Start docker-pool                            |'
 echo '+-----------------------------------------------+'

@@ -20,16 +20,20 @@ While the server(s) and the service are designed to run continuously, the pool p
 - Some IT knowledge
 - Coffee.(Critical)
 
+## TESTED ON
+- Digital ocean.
+- Cloudflare dns only domain.
+- Ubuntu 18.04 x64 server.
+
 ## First run
 steps:
 - First of all setup cloudflare by following this guide https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-Cloudflare-account-and-add-a-website
 - second `git clone https://github.com/maestroi/NimiqDockerPool.git` in the /root directory.
-- change `setup.sh` to settings you need.
-
+- change with `nano setup.sh` the configuration where it states #changeme.
+- and finaly run `bash setup.sh` and watch the magic happen.
 
 ## Run
-Run `bash setup.sh` as root.
-Run `sudo docker-compose up --build -d`.
+Run `sudo docker-compose up --build -d`, this is done in /home/USER/node directory of the created user.
 
 # Changes:
 Added:
