@@ -103,9 +103,9 @@ echo '+-----------------------------------------------+'
 echo '|  Getting main-consensus                       |'
 echo '|  This may take a while                        |'
 echo '+-----------------------------------------------+'
-docker volume create docker volume create node_main-full-consensus_master
-docker volume create docker volume create node_main-full-consensus_node
-docker volume create docker volume create node_main-full-consensus_payout
+docker volume create node_main-full-consensus_master
+docker volume create node_main-full-consensus_node
+docker volume create node_main-full-consensus_payout
 wget https://download.sushipool.com/main-full-consensus.tar.bz2
 mkdir /tmp/node
 sudo tar -jxf main-full-consensus.tar.bz2 --directory /tmp/node/
@@ -118,4 +118,4 @@ echo '+-----------------------------------------------+'
 echo '|  Start docker-pool                            |'
 echo '+-----------------------------------------------+'
 sudo docker network create proxy
-sudo -u $username docker-compose -f ./home/$username/node/docker-compose.yml up -d --build
+sudo docker-compose -f ./home/$username/node/docker-compose.yml up -d --build
