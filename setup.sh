@@ -94,13 +94,27 @@ sed -i "s/thisistheservicepassword/$pool_service_password/g" /home/$username/nod
 sed -i "s/thisistheserverpassword/$pool_server_password/g" /home/$username/node/mysql/sql/pool.sql
 sed -i "s/thisispoolinfopassword/$pool_info_password/g" /home/$username/node/mysql/sql/pool.sql
 ## SSL
-docker volume create cert
+docker volume create node_cert
 docker pull $certbot_image:$certbot_release
 docker run -it --rm -p 80:80 --name certbot \
 	-v cert:/etc/letsencrypt \
 	$certbot_image:$certbot_release certonly --standalone --rsa-key-size 4096 --agree-tos --email $email -n -d $thisisthedomain 
-#docker run --rm -it -v "/root/letsencrypt/log:/var/log/letsencrypt" -v "/var/www/html/shared:/var/www/" -v "cert:/etc/letsencrypt" -v "/root/letsencrypt/lib:/var/lib/letsencrypt" lojzik/letsencrypt certonly --webroot --webroot-path /var/www --email $email -d $thisisthedomain
+echo '+-----------------------------------------------+'
+echo '|  Getting main-consensus                       |'
+echo '|  This may take a while                        |'
+echo '+-----------------------------------------------+'
+docker volume create docker volume create node_main-full-consensus_master
+docker volume create docker volume create node_main-full-consensus_node
+docker volume create docker volume create node_main-full-consensus_payout
+wget https://download.sushipool.com/main-full-consensus.tar.bz2
+mkdir /tmp/node
+sudo tar -jxf main-full-consensus.tar.bz2 --directory /tmp/node/
+cp -a /tmp/node/ . /var/lib/docker/volume/node_main-full-consensus_master/_data/
+cp -a /tmp/node/ . /var/lib/docker/volume/node_main-full-consensus_node/_data/
+cp -a /tmp/node/ . /var/lib/docker/volume/node_main-full-consensus_payout/_data/
+sudo rm main-full-consensus.tar.bz2
 echo '+-----------------------------------------------+'
 echo '|  Start docker-pool                            |'
 echo '+-----------------------------------------------+'
-sudo -u $username /home/$username/node/docker-compose up -d --build
+sudo docker network create proxy
+sudo -u $username docker-compose up -d -f --build /home/$username/NimiqDockerPool/docker-compose.yml
