@@ -10,24 +10,24 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 ##general
-username="nimiq"
-password="thisisasafepassword"
-thisisthepoolname="nimiq-ovh"
+username="nimiq" #CHANGEME 
+password="thisisasafepassword" #CHANGEME 
+thisisthepoolname="NIMIQ-POOL" #CHANGEME 
 ## needed voor lets encrypt cert.
-thisisthedomain="nimiq.ovh"
-email="email"
+thisisthedomain="DOMAIN.COM" #CHANGEME 
+email="email" #CHANGEME 
 ## certbot
 certbot_image="certbot/certbot" 
 certbot_release="latest"
 ##pool settings
-mysql_root_password="thisismysqlrootpassword"
-pool_payout_password="thisispoolpayoutpassword"
-pool_service_password="thisistheservicepassword"
-pool_server_password="thisistheserverpassword"
-pool_info_password="thisispoolinfopassword"
+mysql_root_password="thisismysqlrootpassword" #CHANGEME 
+pool_payout_password="thisispoolpayoutpassword" #CHANGEME 
+pool_service_password="thisistheservicepassword" #CHANGEME 
+pool_server_password="thisistheserverpassword" #CHANGEME 
+pool_info_password="thisispoolinfopassword" #CHANGEME 
 ## config Wallet settings
-thisisthewalletaddress="NQ32 473Y R5T3 979R 325K S8UT 7E3A NRNS VBX2"
-thisisthewalletseed=""
+thisisthewalletaddress="NQ32 473Y R5T3 979R 325K S8UT 7E3A NRNS VBX2" #CHANGEME 
+thisisthewalletseed="" #CHANGEME 
 
 echo '+-----------------------------------------------+'
 echo '| Make sure your domain is linked to your ip!   |'
