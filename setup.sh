@@ -118,4 +118,4 @@ echo '+-----------------------------------------------+'
 echo '|  Start docker-pool                            |'
 echo '+-----------------------------------------------+'
 sudo docker network create proxy
-sudo docker-compose -f ./home/$username/node/docker-compose.yml up -d --build
+sudo docker-compose -f /home/$username/node/docker-compose.yml up -d --build
