@@ -97,7 +97,7 @@ sed -i "s/thisispoolinfopassword/$pool_info_password/g" /home/$username/node/mys
 docker volume create node_cert
 docker pull $certbot_image:$certbot_release
 docker run -it --rm -p 80:80 --name certbot \
-	-v cert:/etc/letsencrypt \
+	-v node_cert:/etc/letsencrypt \
 	$certbot_image:$certbot_release certonly --standalone --rsa-key-size 4096 --agree-tos --email $email -n -d $thisisthedomain 
 echo '+-----------------------------------------------+'
 echo '|  Getting main-consensus                       |'
@@ -109,12 +109,13 @@ docker volume create docker volume create node_main-full-consensus_payout
 wget https://download.sushipool.com/main-full-consensus.tar.bz2
 mkdir /tmp/node
 sudo tar -jxf main-full-consensus.tar.bz2 --directory /tmp/node/
-cp -a /tmp/node/ . /var/lib/docker/volume/node_main-full-consensus_master/_data/
-cp -a /tmp/node/ . /var/lib/docker/volume/node_main-full-consensus_node/_data/
-cp -a /tmp/node/ . /var/lib/docker/volume/node_main-full-consensus_payout/_data/
+cp -a /tmp/node/. /var/lib/docker/volumes/node_main-full-consensus_node/_data
+cp -a /tmp/node/. /var/lib/docker/volumes/node_main-full-consensus_master/_data
+cp -a /tmp/node/. /var/lib/docker/volumes/node_main-full-consensus_payout/_data
 sudo rm main-full-consensus.tar.bz2
+sudo rm -r /tmp/node
 echo '+-----------------------------------------------+'
 echo '|  Start docker-pool                            |'
 echo '+-----------------------------------------------+'
 sudo docker network create proxy
-sudo -u $username docker-compose up -d -f --build /home/$username/NimiqDockerPool/docker-compose.yml
+sudo -u $username docker-compose -f ./home/$username/node/docker-compose.yml up -d --build
