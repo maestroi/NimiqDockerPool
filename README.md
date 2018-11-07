@@ -3,6 +3,7 @@ This mining pool server combines resources of multiple clients mining on the Nim
 Clients are independent network nodes and generate or validate blocks themselves to support decentralization.
 Details about the mining pool protocol can be found [here](https://nimiq-network.github.io/developer-reference/chapters/pool-protocol.html#mining-pool-protocol).
 A mining pool client is implemented in [Nimiq Core](https://github.com/nimiq-network/core/tree/master/src/main/generic/miner).
+Created with love by Nimiq, and DockerPool with SushiPool.
 
 ## Architecture
 The pool server consists of three parts which communicate through a common Mariadb database (schema see `sql/create.sql`)
