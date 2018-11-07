@@ -15,6 +15,10 @@ While the server(s) and the service are designed to run continuously, the pool p
 ## WARNING
 By Running a miningpool you are handeling nimiq currency for your users please handle with care!
 
+## Generating wallet.
+For payout you can get a wallet with seed here https://tools.sushipool.com/.
+Use at your own risk!
+
 ## Requirements
 - VPS/Dedicated server with own public IP
 - Ubuntu 18.04+
