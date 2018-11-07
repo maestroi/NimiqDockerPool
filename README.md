@@ -12,6 +12,9 @@ The pool server consists of three parts which communicate through a common Maria
 
 While the server(s) and the service are designed to run continuously, the pool payout has to be executed whenever a payout is desired.
 
+## WARNING
+By Running a miningpool you are handeling nimiq currency for your users please handle with care!
+
 ## Requirements
 - VPS/Dedicated server with own public IP
 - Ubuntu 18.04+
@@ -31,9 +34,15 @@ steps:
 - second `git clone https://github.com/maestroi/NimiqDockerPool.git` in the /root directory.
 - change with `nano setup.sh` the configuration where it states #changeme.
 - and finaly run `bash setup.sh` and watch the magic happen.
-
+- Have fun :)
+  
 ## Run
 Run `sudo docker-compose up --build -d`, this is done in /home/USER/node directory of the created user.
+
+## LIMITED SUPPORT.
+there is limited support on this project, i will keep it up to date if i feel like it :-).
+
+Donations on: NQ29 Q4X7 JS4A 5Y7E 6ATR B44S 5FMC UNMR 3A2H are appreciated. 
 
 # Changes:
 Added:
@@ -41,7 +50,3 @@ Added:
 - origin/soeren/owner-payout
 - origin/fiaxh/optimize_db_qrys
 - origin/soeren/proxied-ip
-
-Customizations:
-- Device name
-- Custom start difficulty
