@@ -5,14 +5,6 @@ Details about the mining pool protocol can be found [here](https://nimiq-network
 A mining pool client is implemented in [Nimiq Core](https://github.com/nimiq-network/core/tree/master/src/main/generic/miner).
 Created with love by Nimiq, and DockerPool with SushiPool.
 
-## Architecture
-The pool server consists of three parts which communicate through a common Mariadb database (schema see `sql/create.sql`)
-* The pool **server** interacts with clients and verifies their shares. There can be multiple pool server instances.
-* The pool **service** computes client rewards using a PPLNS reward system.
-* The pool **payout** processes automatic payouts above a certain user balance and payout requests.
-
-While the server(s) and the service are designed to run continuously, the pool payout has to be executed whenever a payout is desired.
-
 ## WARNING
 By Running a miningpool you are handeling nimiq currency for your users please handle with care!
 
@@ -43,6 +35,8 @@ steps:
   
 ## Run
 Run `sudo docker-compose up --build -d`, this is done in /home/USER/node directory of the created user.
+Run `sudo docker-compose logs --follow` to see logging.
+In a browser open https://YOURDOMAIN.COM:8444 to see the pool page!
 
 ## LIMITED SUPPORT.
 there is limited support on this project, i will keep it up to date if i feel like it :-).
