@@ -34,9 +34,9 @@ steps:
 - Have fun :)
   
 ## Run
-Run `sudo docker-compose up --build -d`, this is done in /home/USER/node directory of the created user.
-Run `sudo docker-compose logs --follow` to see logging.
-In a browser open https://YOURDOMAIN.COM:8444 to see the pool page!
+- Run `sudo docker-compose up --build -d`, this is done in /home/USER/node directory of the created user.
+- Run `sudo docker-compose logs --follow` to see logging.
+- In a browser open https://YOURDOMAIN.COM:8444 to see the pool page!
 
 ## LIMITED SUPPORT.
 there is limited support on this project, i will keep it up to date if i feel like it :-).
