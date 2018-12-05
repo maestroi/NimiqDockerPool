@@ -7,8 +7,7 @@ sed -i "s/mySqlHost: 'POOL_MYSQL_SERVER'/mySqlHost: '$POOL_MYSQL_SERVER'/g" ./co
 sed -i "s/address: 'WALLET_ADDRESS'/address: '$WALLET_ADDRESS'/g" ./config/payout.conf 
 sed -i "s/seed: 'WALLET_SEED'/address: '$WALLET_SEED'/g" ./config/payout.conf 
 sed -i "s/host: 'POOL_DOMAIN'/host: '$POOL_DOMAIN'/g" ./config/payout.conf
-sed -i "s/POOL_FULL_DOMAIN/$POOL_FULL_DOMAIN/g" ./config/payout.confe.
-
+sed -i "s/POOL_FULL_DOMAIN/$POOL_FULL_DOMAIN/g" ./config/payout.conf
 
 n=1
 while true; do

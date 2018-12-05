@@ -10,25 +10,27 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 ##general
-username="nimiq" #CHANGEME 
-password="thisisasafepassword" #CHANGEME 
+username="pooluser" 
+< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo $password;
 thisisthepoolname="NIMIQ-POOL" #CHANGEME 
 ## needed voor lets encrypt cert.
 thisisthedomain="DOMAIN.COM" #CHANGEME 
 email="email" #CHANGEME 
-## certbot
+## config Wallet settings
+## get your wallet and seed from: https://tools.sushipool.com/ !!!!SAVE IT!!!!
+thisisthewalletaddress="NQ32 473Y R5T3 979R 325K S8UT 7E3A NRNS VBX2" #CHANGEME
+thisisthewalletseed="" #CHANGEME 
+## certbot for certificates
 certbot_image="certbot/certbot" 
 certbot_release="latest"
 ##pool settings
-mysql_root_password="thisismysqlrootpassword" #CHANGEME 
-pool_payout_password="thisispoolpayoutpassword" #CHANGEME 
-pool_service_password="thisistheservicepassword" #CHANGEME 
-pool_server_password="thisistheserverpassword" #CHANGEME 
-pool_info_password="thisispoolinfopassword" #CHANGEME 
-## config Wallet settings
-thisisthewalletaddress="NQ32 473Y R5T3 979R 325K S8UT 7E3A NRNS VBX2" #CHANGEME 
-thisisthewalletseed="" #CHANGEME 
-
+< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo $mysql_root_password; ## random generate password
+< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo $pool_payout_password; ## random generate password
+< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo $pool_service_password; ## random generate password
+< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo $pool_server_password; ## random generate password
+< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo $pool_info_password; ## random generate password
+#save all the passwords :) delete it when you store it at your password vault.
+echo -e "OS_password: $password \n mysql_root_password: $mysql_root_password \n pool_payout_password: $pool_payout_password \n pool_service_password: $pool_service_password \n pool_server_password: $pool_server_password \n pool_info_password: $pool_info_password \n" > /root/passwords.txt
 echo '+-----------------------------------------------+'
 echo '| Make sure your domain is linked to your ip!   |'
 echo '+-----------------------------------------------+'
