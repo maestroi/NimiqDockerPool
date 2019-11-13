@@ -29,7 +29,7 @@
     "httpdispatcher": "^2.1.2",
     "jasmine-spec-reporter": "^4.2.1",
     "json5": "^1.0.1",
-    "lodash.merge": "^4.6.1",
+    "lodash.merge": "^4.6.2",
     "minimist": "^1.2.0",
     "mysql2": "^1.6.1",
     "uws": "^9.147.0"
