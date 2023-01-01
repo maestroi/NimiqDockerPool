@@ -19,7 +19,7 @@
     "@nimiq/core": "^1.3.1",
     "btoa": "^1.2.1",
     "jasmine-spec-reporter": "^4.2.1",
-    "json5": "^1.0.1",
+    "json5": "^2.2.2",
     "lodash.merge": "^4.6.2",
     "minimist": "^1.2.0",
     "mysql2": "^1.5.3",
