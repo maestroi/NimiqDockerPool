@@ -28,7 +28,7 @@
     "btoa": "^1.2.1",
     "httpdispatcher": "^2.1.2",
     "jasmine-spec-reporter": "^4.2.1",
-    "json5": "^1.0.1",
+    "json5": "^2.2.2",
     "lodash.merge": "^4.6.1",
     "minimist": "^1.2.0",
     "mysql2": "^1.6.1",
